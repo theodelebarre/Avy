@@ -17,7 +17,12 @@ export default function MedicineScreen() {
         style={styles.linearGradientStyle}>
 
         <View style={styles.panelWrapperStyle}>
-          
+          <View style={styles.headerWrapperStyle}>
+            <StyledText fontFamily="SB" fontSize={15} color={Colors.Black_1}>
+              {'Your medication'}
+            </StyledText>
+            <View style={styles.headerSeparatorStyle} />
+          </View>
         </View>
        
       </LinearGradient>
@@ -53,4 +58,13 @@ const styles = StyleSheet.create({
     shadowRadius: 9,
     elevation: 5,
   },
+  headerWrapperStyle: {
+    marginTop: 20,
+    marginHorizontal: 20,
+  },
+  headerSeparatorStyle: {
+    backgroundColor: Colors.Grey_2,
+    height: 1,
+    marginTop: 11,
+  }
 });

@@ -4,25 +4,23 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import JournalScreen from '../screens/JournalScreen';
+import HowYouFeelScreen from '../screens/HowYouFeelScreen';
 import MedicineScreen from '../screens/MedicineScreen';
 import ContactScreen from '../screens/ContactScreen';
 import ExerciseScreen from '../screens/ExerciseScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
-// const SettingsModalStack = createStackNavigator(
-//   {
-//     SettingsScreen: {
-//       screen: SettingsScreen,
-//     },
-//     RewardsScreen: {
-//       screen: RewardsScreen,
-//     },
-//   },
-//   {
-//     mode: 'modal',
-//     headerMode: 'none',
-//   }
-// );
+const HowYouFeelModalStack = createStackNavigator(
+  {
+    SettingsScreen: {
+      screen: HowYouFeelScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  }
+);
 
 const JournalStack = createStackNavigator({
   Journal: {
@@ -111,7 +109,7 @@ export default createStackNavigator(
     Main: {
       screen: MainStacks,
     },
-    // Settings: SettingsModalStack,
+    HowYouFeel: HowYouFeelModalStack,
   },
   {
     mode: 'modal',

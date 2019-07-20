@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo';
+import { useNavigation } from 'react-navigation-hooks';
 
 import { StyledText } from '@components';
 
@@ -8,6 +9,7 @@ import { Colors } from '@theme';
 import { getStatusBarHeight } from '../functions';
 
 export default function JournalScreen() {
+  const { navigate } = useNavigation();
 
   return (
     <View style={styles.containerStyle}>
@@ -28,7 +30,7 @@ export default function JournalScreen() {
             </StyledText>
           </View>
           
-          <TouchableOpacity style={styles.recordButtonStyle}>
+          <TouchableOpacity onPress={()=> navigate('HowYouFeel')} style={styles.recordButtonStyle}>
             <Image source={require('@assets/icons/Bell.png')} resizeMode="cover" style={styles.bellIconStyle} />
 
             <View style={styles.recordButtonTitleWrapperStyle}>
