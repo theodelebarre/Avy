@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Image, StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 
 import { Colors, Metrics } from '@theme';
 
-import { getStatusBarHeight } from '../functions';
+import { getStatusBarHeight, getBottomSpace } from '../functions';
 
 export default function HowYouFeelScreen() {
   const { navigate, goBack, popToTop } = useNavigation();
@@ -31,9 +31,17 @@ export default function HowYouFeelScreen() {
     }
   };
 
+  const onCheckPress = () => {
+    if (step < 4) {
+      setStep(step + 1);
+    } else {
+      popToTop();
+    }
+  };
+
   return (
     <View style={styles.containerStyle}>
-      <View style={styles.navigationHeaderWrapperStyle}>
+      <View style={styles.headerNavigationWrapperStyle}>
         <TouchableOpacity onPress={onBackPress} disabled={step === 1} style={{ opacity: step === 1 ? 0 : 1}}>
           <Image source={require('@assets/icons/Back.png')} resizeMode="cover" style={styles.navigationIconStyle} />
         </TouchableOpacity>
@@ -64,9 +72,62 @@ export default function HowYouFeelScreen() {
               <TouchableOpacity onPress={() => setStep(step + 1)} style={styles.buttonStyle}>
                 <Image source={require('@assets/icons/Rating_4.png')} resizeMode="cover" style={styles.ratingIconStyle} />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonStyle}>
+              <TouchableOpacity onPress={() => setStep(step + 1)} style={styles.buttonStyle}>
                 <Image source={require('@assets/icons/Rating_5.png')} resizeMode="cover" style={styles.ratingIconStyle} />
               </TouchableOpacity>
+            </View>
+          )}
+          {step === 2 && (
+            <View style={styles.bloodPressureWrapperStyle}>
+              <View>
+                <StyledText fontFamily="SB" fontSize={14} color={Colors.Grey_1}>
+                {'Top'}
+                </StyledText>
+                <TextInput
+                  placeholder="..."
+                  placeholderTextColor={Colors.Grey_1}
+                  underlineColorAndroid="transparent"
+                  style={[styles.textInput, { width: 44 }]}
+                />
+              </View>
+              <View>
+                <StyledText fontFamily="SB" fontSize={14} color={Colors.Grey_1}>
+                {'Bottom'}
+                </StyledText>
+                <TextInput
+                  placeholder="..."
+                  placeholderTextColor={Colors.Grey_1}
+                  underlineColorAndroid="transparent"
+                  style={[styles.textInput, { width: 44 }]}
+                />
+              </View>
+            </View>
+          )}
+
+          {step === 3 && (
+            <View style={styles.sugarLevelWrapperStyle}>
+              <TextInput
+                placeholder="0 mg/dl"
+                placeholderTextColor={Colors.Grey_1}
+                underlineColorAndroid="transparent"
+                style={[styles.textInput, { width: 107 }]}
+              />
+            </View>
+          )}
+
+          {step !== 1 && (
+            <View style={[styles.footerNavigationWrapperStyle, { justifyContent: step !== 4 ? 'flex-end' : 'center' }]}>
+              <TouchableOpacity onPress={onCheckPress} style={[styles.buttonStyle, { marginBottom: 23 }]}>
+                <Image source={require('@assets/icons/Check.png')} resizeMode="cover" style={styles.ratingIconStyle} />
+              </TouchableOpacity>
+
+              {step !== 4 && (
+                <TouchableOpacity onPress={() => setStep(step + 1)}>
+                  <StyledText fontSize={14} color={Colors.Orange_1}>
+                    {'Skip'}
+                  </StyledText>
+                </TouchableOpacity>
+              )}
             </View>
           )}
 
@@ -87,7 +148,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  navigationHeaderWrapperStyle: {
+  headerNavigationWrapperStyle: {
     marginTop: 20 + getStatusBarHeight(),
     paddingHorizontal: 20,
     flexDirection: 'row',
@@ -128,4 +189,27 @@ const styles = StyleSheet.create({
     height: 32,
     width: 32,
   },
+  bloodPressureWrapperStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 179,
+    alignSelf: 'center',
+    marginTop: 25,
+  },
+  textInput: {
+    fontFamily: 'stilu-semibold',
+    color: Colors.Black_1,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.Grey_2,
+    paddingBottom: 5,
+  },
+  footerNavigationWrapperStyle: {
+    flex: 1,
+    alignItems: 'center',
+    marginBottom: 24 + getBottomSpace(),
+  },
+  sugarLevelWrapperStyle: {
+    marginTop: 59,
+    alignItems: 'center',
+  }
 });
