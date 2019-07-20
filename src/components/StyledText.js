@@ -2,22 +2,26 @@ import React from 'react';
 import { Text } from 'react-native';
 
 export default StyledText = props => {
-  // const renderFontFamily = fontFamily => {
-  //   switch (fontFamily) {
-  //     case 'R':
-  //       return { fontFamily: 'open-sans-regular' };
-  //     case 'SB':
-  //       return { fontFamily: 'open-sans-semibold' };
-  //     case 'B':
-  //       return { fontFamily: 'open-sans-bold' };
-  //     case 'BI':
-  //       return { fontFamily: 'open-sans-bold-italic' };
-  //     case 'L':
-  //       return { fontFamily: 'open-sans-light' };
-  //     default:
-  //       return { fontFamily: 'open-sans-regular' };
-  //   }
-  // };
+  const renderFontFamily = fontFamily => {
+    switch (fontFamily) {
+      case 'L':
+        return { fontFamily: 'stilu-light' };
+      case 'LO':
+        return { fontFamily: 'stilu-light-oblique' };
+      case 'B':
+        return { fontFamily: 'stilu-bold' };
+      case 'BO':
+        return { fontFamily: 'stilu-bold-oblique' };
+      case 'SB':
+        return { fontFamily: 'stilu-semibold' };
+      case 'SBO':
+        return { fontFamily: 'stilu-semibold-oblique' };
+      case 'O':
+        return { fontFamily: 'stilu-oblique' };
+      default:
+        return { fontFamily: 'stilu-regular' };
+    }
+  };
 
   return (
     <Text

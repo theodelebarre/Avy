@@ -1,6 +1,10 @@
 const Colors = {
     White: '#FFF',
     Blue_1: 'rgb(124, 209, 227)',
+    Black_1 :'rgb(66, 56, 56)',
+    Grey_1 :'rgb(155, 155, 155)',
+    Orange_1 :'rgb(240, 97, 41)',
+    Orange_2 :'rgb(255, 241, 236)',
 };
 
 export default Colors;

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo';
 
-import { Colors } from '@theme';
+import { StyledText } from '@components';
 
+import { Colors } from '@theme';
 import { getStatusBarHeight } from '../functions';
 
 export default function JournalScreen() {
@@ -18,7 +19,28 @@ export default function JournalScreen() {
         </View>
 
         <View style={styles.panelWrapperStyle}>
+          <View style={styles.welcomeWrapperStyle}>
+            <StyledText fontFamily="SB" fontSize={15} color={Colors.Black_1}>
+              {'Hi Jenny,\nwelcome to your Journal.'}
+            </StyledText>
+            <StyledText fontSize={15} color={Colors.Grey_1}>
+              {'Keep here a record of how you feel.'}
+            </StyledText>
+          </View>
+          
+          <TouchableOpacity style={styles.recordButtonStyle}>
+            <Image source={require('@assets/icons/Bell.png')} resizeMode="cover" style={styles.bellIconStyle} />
 
+            <View style={styles.recordButtonTitleWrapperStyle}>
+              <StyledText fontFamily="SB" fontSize={14} color={Colors.Orange_1}>
+                {'How are you feeling?'}
+              </StyledText>
+              <StyledText fontSize={14} color={Colors.Orange_1}>
+                {'Record it here.'}
+              </StyledText>
+            </View>
+          </TouchableOpacity>
+          
         </View>
        
       </LinearGradient>
@@ -76,5 +98,25 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 9,
     elevation: 5,
+  },
+  welcomeWrapperStyle: {
+    marginVertical: 20,
+    marginHorizontal: 20,
+  },
+  recordButtonStyle: {
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    height: 70,
+    borderWidth: 1,
+    borderColor: Colors.Orange_1,
+    borderRadius: 9,
+    backgroundColor: Colors.Orange_2,
+    alignItems: 'center',
+  },
+  bellIconStyle: {
+    width: 24,
+    height: 24,
+    marginLeft: 10,
+    marginRight: 18,
   }
 });
