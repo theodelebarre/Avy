@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, TextInput, Image, FlatList, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, TextInput, Image, FlatList, Alert, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo';
 
 import { StyledText } from '@components';
@@ -124,7 +124,29 @@ export default function ContactScreen() {
           renderItem={({item, index}) => {
             return (
               <View style={styles.contactWrapperStyle}>
-                <TouchableOpacity onPress={() => setCloudStatus(!item.cloud)} style={styles.iconButtonStyle}>
+                <TouchableOpacity
+                onPress={() => {
+                  if (!item.cloud) {
+                    Alert.alert(
+                      'Your Avy medical data will be shared',
+                      'Your data will be shared with this contact!',
+                        [
+                          {
+                            text: 'OK', 
+                            onPress: () => setCloudStatus(!item.cloud)
+                          },
+                          {
+                            text: 'Cancel',
+                            style: 'cancel',
+                          },
+                        ],
+                      { cancelable: false },
+                    );
+                  } else {
+                    setCloudStatus(!item.cloud);
+                  } 
+                  }} 
+                  style={styles.iconButtonStyle}>
                   <Image source={item.cloud ? require('@assets/icons/Cloud_plain.png') : require('@assets/icons/Cloud.png')} resizeMode="cover" style={styles.contactIconsStyle} />
                 </TouchableOpacity>
                 <Image source={item.profilePicture} resizeMode="cover" style={styles.profilePictureStyle} />
