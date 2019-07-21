@@ -41,7 +41,7 @@ export default function ExerciceScreen() {
   return (
     <View style={styles.containerStyle}>
       <LinearGradient
-        colors={[Colors.Blue_1, Colors.Blue_1, Colors.White]}
+        colors={[Colors.Blue_1, Colors.Blue_2]}
         style={styles.linearGradientStyle}>
 
         <View style={[styles.panelWrapperStyle, { flex: 0, padding: 32, borderRadius: 23, alignItems: 'center' }]}>

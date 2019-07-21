@@ -3,6 +3,10 @@ import { Platform } from 'react-native';
 
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
+import { TabBarIcon } from '@components';
+
+import { Colors } from '@theme';
+
 import JournalScreen from '../screens/JournalScreen';
 import HowYouFeelScreen from '../screens/HowYouFeelScreen';
 import MedicineScreen from '../screens/MedicineScreen';
@@ -55,16 +59,12 @@ const JournalStack = createStackNavigator({
 });
 JournalStack.navigationOptions = {
   tabBarLabel: 'Journal',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon
-  //     focused={focused}
-  //     name={
-  //       Platform.OS === 'ios'
-  //         ? `ios-information-circle${focused ? '' : '-outline'}`
-  //         : 'md-information-circle'
-  //     }
-  //   />
-  // ),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      iconSource={require('@assets/icons/MainTab_1.png')}
+    />
+  ),
 };
 
 const MedicineStack = createStackNavigator({
@@ -72,9 +72,12 @@ const MedicineStack = createStackNavigator({
 });
 MedicineStack.navigationOptions = {
   tabBarLabel: 'Medicine',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  // ),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      iconSource={require('@assets/icons/MainTab_2.png')}
+    />
+  ),
 };
 
 const ContactStack = createStackNavigator({
@@ -82,9 +85,12 @@ const ContactStack = createStackNavigator({
 });
 ContactStack.navigationOptions = {
   tabBarLabel: 'Contact',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  // ),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      iconSource={require('@assets/icons/MainTab_3.png')}
+    />
+  ),
 };
 
 const ExerciseStack = createStackNavigator({
@@ -92,9 +98,12 @@ const ExerciseStack = createStackNavigator({
 });
 ExerciseStack.navigationOptions = {
   tabBarLabel: 'Exercice',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  // ),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      iconSource={require('@assets/icons/MainTab_4.png')}
+    />
+  ),
 };
 
 const SettingsStack = createStackNavigator({
@@ -103,7 +112,10 @@ const SettingsStack = createStackNavigator({
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  //   <TabBarIcon
+  //     focused={focused}
+  //     iconSource={require('@assets/icons/MainTab_4.png')}
+  //   />
   // ),
 };
 
@@ -118,6 +130,22 @@ const MainTabNavigator = createBottomTabNavigator(
   {
     tabBarPosition: 'bottom',
     initialRouteName: 'JournalStack',
+    tabBarOptions: {
+      activeTintColor: Colors.Orange_1,
+      labelStyle: {
+        fontSize: 12,
+        fontFamily: 'stilu-regular',
+      },
+      style: {
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderWidth: 0,
+        borderColor: 'transparent',
+        height: 74,
+        shadowOpacity: 0,
+        borderTopColor: 'transparent',
+      },
+    }
   }
 );
 

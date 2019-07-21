@@ -85,7 +85,7 @@ export default function ContactScreen() {
   return (
     <View style={styles.containerStyle}>
       <LinearGradient
-        colors={[Colors.Blue_1, Colors.Blue_1, Colors.White]}
+        colors={[Colors.Blue_1, Colors.Blue_2]}
         style={styles.linearGradientStyle}>
         <View style={styles.panelWrapperStyle}>
           <View style={styles.tabsWrapperStyle}>

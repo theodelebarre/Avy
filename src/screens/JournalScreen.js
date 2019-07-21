@@ -35,7 +35,7 @@ export default function JournalScreen() {
   return (
     <View style={styles.containerStyle}>
       <LinearGradient
-        colors={[Colors.Blue_1, Colors.Blue_1, Colors.White]}
+        colors={[Colors.Blue_1, Colors.Blue_2]}
         style={styles.linearGradientStyle}>
         <View style={styles.profilePictureWrapperStyle}>
           <Image source={require('@assets/images/user-picture-0.png')} resizeMode="cover" style={styles.profilePictureStyle} />
