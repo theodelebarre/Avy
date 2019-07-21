@@ -34,7 +34,7 @@ export default function ExerciceScreen() {
       description: 'Tuesday, 16 Jul 2019',
       done: false,
     },
-  ]
+  ];
 
   return (
     <View style={styles.containerStyle}>
@@ -137,6 +137,14 @@ const styles = StyleSheet.create({
     borderColor: Colors.Orange_1,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: Colors.Orange_Shadow,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowRadius: 2,
+    shadowOpacity: 1,
+    elevation: 5,
   },
   tabsWrapperStyle: {
     flexDirection: 'row',
