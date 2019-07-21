@@ -82,6 +82,7 @@ export default function ExerciceScreen() {
             data={EXERCICES_DATA}
             ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
             contentContainerStyle={{ paddingHorizontal: 24 }}
+            style={{ marginTop: 24 }}
             renderItem={({item, index}) => <InformationRow key={item.key} circleIcon={require('@assets/icons/Exercice.png')}title={item.title} description={item.description} showCheckIcon={item.done} />}
           />
         </View>

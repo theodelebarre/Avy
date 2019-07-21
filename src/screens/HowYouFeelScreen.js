@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Image, StyleSheet, TextInput, KeyboardAvoidingView} from 'react-native';
-import { useNavigation } from 'react-navigation-hooks';
+import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { NavigationActions } from 'react-navigation';
 
@@ -10,6 +10,7 @@ import { getStatusBarHeight, getBottomSpace } from '../functions';
 
 export default function HowYouFeelScreen() {
   const { navigate, goBack, popToTop, reset } = useNavigation();
+  const onBackButtonPress = useNavigationParam('onBackPress');
   const [step, setStep] = useState(1);
 
   const renderStepTitle = step => {
@@ -37,6 +38,7 @@ export default function HowYouFeelScreen() {
     if (step < 4) {
       setStep(step + 1);
     } else {
+      onBackButtonPress();
       popToTop();
     }
   };

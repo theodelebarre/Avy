@@ -8,29 +8,49 @@ import { StyledText } from '@components';
 import { Colors } from '@theme';
 import { getStatusBarHeight } from '../functions';
 
+const MOOD_DATA = [
+  {
+    key: 'a',
+    title: 'Your blood pressure is high!',
+    description: '19 Jul 2019, 5:02pm',
+    icon: require('@assets/icons/Rating_1.png'),
+  },
+  {
+    key: 'b',
+    title: 'Little low on the blood sugar',
+    description: '18 Jul 2019, 6:27pm',
+    icon: require('@assets/icons/Rating_2.png'),
+  },
+  {
+    key: 'c',
+    title: 'You are feeling good',
+    description: '17 Jul 2019, 8:33pm',
+    icon: require('@assets/icons/Rating_5.png'),
+  },
+];
+
 export default function JournalScreen() {
   const { navigate } = useNavigation();
+  const [ refreshFeed, setRefreshFeed ] = useState(false);
 
-  const MOOD_DATA = [
-    {
-      key: 'a',
-      title: 'Your blood pressure is high!',
-      description: '19 Jul 2019, 5:02pm',
-      icon: require('@assets/icons/Rating_1.png'),
-    },
-    {
-      key: 'b',
-      title: 'Little low on the blood sugar',
-      description: '18 Jul 2019, 6:27pm',
-      icon: require('@assets/icons/Rating_2.png'),
-    },
-    {
-      key: 'c',
-      title: 'You are feeling good',
-      description: '17 Jul 2019, 8:33pm',
-      icon: require('@assets/icons/Rating_5.png'),
-    },
-  ];
+  const handleFeedRefresh = () => {
+    setRefreshFeed(true);
+      setTimeout(() => {
+        MOOD_DATA.unshift({
+          key: 'd',
+          title: 'Little low on the blood sugar',
+          description: '20 Jul 2019, 5:38pm',
+          icon: require('@assets/icons/Rating_2.png'),
+        });
+      }, 1000);
+
+    setTimeout(() => {
+      this.feedFlatList.scrollToIndex({ animated: true, index: 0, viewOffset: 0 });
+      setRefreshFeed(false);
+    }, 1250);
+  };
+
+  
 
   return (
     <View style={styles.containerStyle}>
@@ -51,7 +71,7 @@ export default function JournalScreen() {
             </StyledText>
           </View>
           
-          <TouchableOpacity onPress={()=> navigate('HowYouFeel')} style={styles.recordButtonStyle}>
+          <TouchableOpacity onPress={()=> navigate('HowYouFeel', { onBackPress: handleFeedRefresh })} style={styles.recordButtonStyle}>
             <Image source={require('@assets/icons/Bell.png')} resizeMode="cover" style={styles.bellIconStyle} />
 
             <View style={styles.recordButtonTitleWrapperStyle}>
@@ -65,10 +85,15 @@ export default function JournalScreen() {
           </TouchableOpacity>
 
           <FlatList
+            ref={r => {
+              this.feedFlatList = r;
+            }}
+            refreshing={refreshFeed}
+            onRefresh={() => handleFeedRefresh()}
             data={MOOD_DATA}
             ItemSeparatorComponent={() => <View style={{ height: 24, width: 2, marginVertical: 2, backgroundColor: Colors.Blue_2, marginLeft: 17 }} />}
             contentContainerStyle={{ paddingHorizontal: 24 }}
-            style={{ marginTop: 16 }}
+            style={{ flex: 1, marginTop: 16 }}
             renderItem={({item, index}) => <InformationRow highlightTitle key={item.key} circleIcon={item.icon} title={item.title} description={item.description} showCheckIcon={item.done} />}
           />
           
