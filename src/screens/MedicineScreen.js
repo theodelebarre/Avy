@@ -66,5 +66,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Grey_2,
     height: 1,
     marginTop: 11,
-  }
+  },
 });
