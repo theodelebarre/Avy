@@ -12,9 +12,22 @@ import HowYouFeelScreen from '../screens/HowYouFeelScreen';
 import MedicineScreen from '../screens/MedicineScreen';
 import TakeYourMedicationScreen from '../screens/TakeYourMedicationScreen';
 import ContactScreen from '../screens/ContactScreen';
+import ChatScreen from '../screens/ChatScreen';
 import ExerciseScreen from '../screens/ExerciseScreen';
 import DoWorkOutScreen from '../screens/DoWorkOutScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+
+const ChatScreenModalStack = createStackNavigator(
+  {
+    ChatScreen: {
+      screen: ChatScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  }
+);
 
 const TakeYourMedicationModalStack = createStackNavigator(
   {
@@ -166,6 +179,7 @@ export default createStackNavigator(
     HowYouFeel: HowYouFeelModalStack,
     DoWorkOut: DoWorkOutModalStack,
     TakeYourMedication: TakeYourMedicationModalStack,
+    ChatScreen: ChatScreenModalStack,
   },
   {
     mode: 'modal',

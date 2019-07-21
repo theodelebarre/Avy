@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, TextInput, Image, FlatList, Alert, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo';
+import { useNavigation } from 'react-navigation-hooks';
 
 import { StyledText } from '@components';
 
@@ -10,6 +11,7 @@ import { getStatusBarHeight } from '../functions';
 export default function ContactScreen() {
   const [tab, setTab] = useState(1);
   const [cloudStatus, setCloudStatus] = useState(false);
+  const { navigate } = useNavigation();
 
   const HOSPITAL_DATA = [
     {
@@ -161,7 +163,7 @@ export default function ContactScreen() {
                 <TouchableOpacity style={[styles.iconButtonStyle, { marginRight: 24 }]}>
                   <Image source={require('@assets/icons/Call.png')} resizeMode="cover" style={styles.contactIconsStyle} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconButtonStyle}>
+                <TouchableOpacity onPress={()=> navigate('ChatScreen')} style={styles.iconButtonStyle}>
                   <Image source={require('@assets/icons/Message.png')} resizeMode="cover" style={styles.contactIconsStyle} />
                 </TouchableOpacity>
 
