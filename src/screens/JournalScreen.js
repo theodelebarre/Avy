@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo';
 import { useNavigation } from 'react-navigation-hooks';
 
@@ -10,6 +10,24 @@ import { getStatusBarHeight } from '../functions';
 
 export default function JournalScreen() {
   const { navigate } = useNavigation();
+
+  const MOOD_DATA = [
+    {
+      key: 'a',
+      title: 'Your blood pressure is high!',
+      description: '19 Jul 2019, 5:02pm',
+    },
+    {
+      key: 'b',
+      title: 'Little low on the blood sugar',
+      description: '18 Jul 2019, 6:27pm',
+    },
+    {
+      key: 'c',
+      title: 'You are feeling good',
+      description: '17 Jul 2019, 8:33pm',
+    },
+  ];
 
   return (
     <View style={styles.containerStyle}>
@@ -42,6 +60,14 @@ export default function JournalScreen() {
               </StyledText>
             </View>
           </TouchableOpacity>
+
+          <FlatList
+            data={MOOD_DATA}
+            ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
+            contentContainerStyle={{ paddingHorizontal: 24 }}
+            style={{ marginTop: 16 }}
+            renderItem={({item, index}) => <InformationRow highlightTitle key={item.key} title={item.title} description={item.description} showCheckIcon={item.done} />}
+          />
           
         </View>
        
