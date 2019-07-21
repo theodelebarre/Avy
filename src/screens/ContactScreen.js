@@ -38,7 +38,7 @@ export default function ContactScreen() {
 
   return (
     <View style={styles.containerStyle}>
-    <LinearGradient
+      <LinearGradient
         colors={[Colors.Blue_1, Colors.Blue_1, Colors.White]}
         style={styles.linearGradientStyle}>
         <View style={styles.panelWrapperStyle}>
@@ -59,12 +59,15 @@ export default function ContactScreen() {
               </StyledText>
             </TouchableOpacity>
           </View>
-          <TextInput
-            placeholder="Search"
-            placeholderTextColor={Colors.Grey_1}
-            underlineColorAndroid="transparent"
-            style={[styles.textInput, { width: Metrics.screenWidth - 80 }]}
-          />
+          <View style={{ alignItems: 'center', marginHorizontal: 20 }}>
+            <Image source={require('@assets/icons/Search.png')} resizeMode="cover" style={styles.searchIconStyle} />
+            <TextInput
+              placeholder="Search"
+              placeholderTextColor={Colors.Grey_1}
+              underlineColorAndroid="transparent"
+              style={[styles.textInput, { width: Metrics.screenWidth - 80 }]}
+            />
+          </View>
         </View>
         <FlatList
           data={CONTACT_DATA}
@@ -148,6 +151,7 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     marginHorizontal: 20,
     marginBottom: 20,
+    paddingLeft: 24,
   },
   profilePictureStyle: {
     width: 36,
@@ -179,4 +183,10 @@ const styles = StyleSheet.create({
     shadowRadius: 9,
     elevation: 5,
   },
+  searchIconStyle: {
+    width: 16,
+    height: 16,
+    position: 'absolute',
+    left: 4,
+  }
 });

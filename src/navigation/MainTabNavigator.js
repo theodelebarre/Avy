@@ -12,7 +12,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 
 const HowYouFeelModalStack = createStackNavigator(
   {
-    SettingsScreen: {
+    HowYouFeel: {
       screen: HowYouFeelScreen,
     },
   },
@@ -87,7 +87,7 @@ const MainTabNavigator = createBottomTabNavigator(
     MedicineStack,
     ContactStack,
     ExerciseStack,
-    SettingsStack,
+    // SettingsStack,
   },
   {
     tabBarPosition: 'bottom',

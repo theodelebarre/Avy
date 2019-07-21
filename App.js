@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { AppLoading } from 'expo';
+import { AppLoading, Asset } from 'expo';
 import * as Font from 'expo-font';
 
 import AppNavigator from './src/navigation/AppNavigator';
+
+function cacheImages(images) {
+  return images.map(image => {
+    if (typeof image === 'string') {
+      return Image.prefetch(image);
+    } else {
+      return Asset.fromModule(image).downloadAsync();
+    }
+  });
+}
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -19,6 +29,10 @@ export default function App() {
       'stilu-light': require('@assets/fonts/Stilu-Light.otf'),
       'stilu-light-oblique': require('@assets/fonts/Stilu-LightOblique.otf'),
     });
+
+    await cacheImages([
+      require('@assets/images/How-are-you-feeling-today.gif'),
+    ]);
   };
 
   if (!isReady) {

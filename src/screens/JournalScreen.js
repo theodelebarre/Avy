@@ -16,16 +16,19 @@ export default function JournalScreen() {
       key: 'a',
       title: 'Your blood pressure is high!',
       description: '19 Jul 2019, 5:02pm',
+      icon: require('@assets/icons/Rating_1.png'),
     },
     {
       key: 'b',
       title: 'Little low on the blood sugar',
       description: '18 Jul 2019, 6:27pm',
+      icon: require('@assets/icons/Rating_2.png'),
     },
     {
       key: 'c',
       title: 'You are feeling good',
       description: '17 Jul 2019, 8:33pm',
+      icon: require('@assets/icons/Rating_5.png'),
     },
   ];
 
@@ -63,10 +66,10 @@ export default function JournalScreen() {
 
           <FlatList
             data={MOOD_DATA}
-            ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
+            ItemSeparatorComponent={() => <View style={{ height: 24, width: 2, marginVertical: 2, backgroundColor: Colors.Blue_2, marginLeft: 17 }} />}
             contentContainerStyle={{ paddingHorizontal: 24 }}
             style={{ marginTop: 16 }}
-            renderItem={({item, index}) => <InformationRow highlightTitle key={item.key} title={item.title} description={item.description} showCheckIcon={item.done} />}
+            renderItem={({item, index}) => <InformationRow highlightTitle key={item.key} circleIcon={item.icon} title={item.title} description={item.description} showCheckIcon={item.done} />}
           />
           
         </View>

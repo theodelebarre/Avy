@@ -17,6 +17,7 @@ export default function MedicineScreen() {
       prescription: '1 mg Bumetadine, 1 capsule',
       taken: false,
       missed: false,
+      circleIcon: require('@assets/icons/Forward.png'),
     },
     {
       key: 'b',
@@ -24,6 +25,7 @@ export default function MedicineScreen() {
       prescription: '30 mg Bumetadine, 1 capsule',
       taken: false,
       missed: false,
+      circleIcon: require('@assets/icons/Check.png'),
     },
     {
       key: 'bc',
@@ -31,6 +33,7 @@ export default function MedicineScreen() {
       prescription: '1 mg Bumetadine, 1 capsule',
       taken: true,
       missed: false,
+      circleIcon: require('@assets/icons/Check.png'),
     },
     {
       key: 'd',
@@ -38,6 +41,7 @@ export default function MedicineScreen() {
       prescription: '1 mg Bisoprolol, 1 capsule',
       taken: true,
       missed: false,
+      circleIcon: require('@assets/icons/Check.png'),
     },
     {
       key: 'e',
@@ -45,6 +49,7 @@ export default function MedicineScreen() {
       prescription: '0.0125 mg Digoxine, 1 capsule',
       taken: false,
       missed: true,
+      circleIcon: require('@assets/icons/Close.png'),
     },
     {
       key: 'f',
@@ -52,6 +57,7 @@ export default function MedicineScreen() {
       prescription: '3 mg Warfarine, 1 capsule',
       taken: true,
       missed: false,
+      circleIcon: require('@assets/icons/Check.png'),
     },
   ];
 
@@ -87,7 +93,7 @@ export default function MedicineScreen() {
                 <View>
                   <View style={styles.hourWrapperStyle}>
                       <View style={[styles.circleStyle, { backgroundColor: !item.taken && !item.missed ? Colors.Orange_2 : item.missed ? Colors.White : Colors.Blue_1, borderColor: !item.taken && !item.missed ? Colors.Orange_1 : item.missed ? Colors.Blue_1 : Colors.White,  }]}>
-
+                        <Image source={item.circleIcon} style={[styles.circleIconStyle, { tintColor: !item.taken && !item.missed ? Colors.Orange_1 : item.missed ? Colors.Blue_1 : Colors.White }]} resizeMode="cover" />
                       </View>
                       <StyledText fontFamily="SB" fontSize={14} color={!item.taken && !item.missed ? Colors.Orange_1 : Colors.Blue_1}>
                         {item.hour}
@@ -186,4 +192,8 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15 + 8,
   },
+  circleIconStyle: {
+    width: 22,
+    height: 22,
+  }
 });

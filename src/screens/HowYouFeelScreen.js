@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Image, StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
+import { NavigationActions } from 'react-navigation';
 
 import { Colors, Metrics } from '@theme';
 
 import { getStatusBarHeight, getBottomSpace } from '../functions';
 
 export default function HowYouFeelScreen() {
-  const { navigate, goBack, popToTop } = useNavigation();
+  const { navigate, goBack, popToTop, reset } = useNavigation();
   const [step, setStep] = useState(1);
 
   const renderStepTitle = step => {
@@ -133,8 +135,7 @@ export default function HowYouFeelScreen() {
 
         </View>
       </View>
-      
-      
+      <KeyboardSpacer/>
     </View>
   );
 }

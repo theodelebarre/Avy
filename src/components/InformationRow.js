@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 import { Colors } from '@theme';
 
@@ -7,7 +7,7 @@ export default InformationRow = props => {
   return (
     <View style={[styles.mainWrapperStyle, props.addedStyle]}>
       <View style={styles.circleStyle}>
-
+        <Image source={props.circleIcon} style={styles.iconStyle} resizeMode="cover" />
       </View>
       <View>
         <StyledText fontFamily={props.highlightTitle && "SB"} fontSize={14} color={Colors.Black_1}>
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Blue_2
   },
   iconStyle: {
-    height: 32,
-    width: 32,
+    height: 24,
+    width: 24,
+    tintColor: Colors.Blue_1
   },
 })
