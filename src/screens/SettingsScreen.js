@@ -32,11 +32,11 @@ export default function SettingsScreen() {
             <View style={styles.headerSeparatorStyle} />
           </View>
           <View style={styles.panelContentWrapperStyle}>
-            <InformationRow title="Your account" description="Edit your information" />
+            <InformationRow highlightTitle title="Your account" description="Edit your information" />
             <View style={styles.contentSeparatorStyle} />
-            <InformationRow title="Notifications" description="Manage Avy communication" />
+            <InformationRow highlightTitle title="Notifications" description="Manage Avy communication" />
             <View style={styles.contentSeparatorStyle} />
-            <InformationRow title="Devices" description="Connect your trackers" />
+            <InformationRow highlightTitle title="Devices" description="Connect your trackers" />
           </View>
         </View>
        

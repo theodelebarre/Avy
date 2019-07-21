@@ -5,7 +5,7 @@ import { Colors } from '@theme';
 
 export default InformationRow = props => {
   return (
-    <View style={styles.mainWrapperStyle}>
+    <View style={[styles.mainWrapperStyle, props.addedStyle]}>
       <View style={styles.circleStyle}>
 
       </View>
