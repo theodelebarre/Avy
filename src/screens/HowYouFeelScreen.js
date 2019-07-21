@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Image, StyleSheet, TextInput } from 'react-native';
+import { View, TouchableOpacity, Image, StyleSheet, TextInput, KeyboardAvoidingView} from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { NavigationActions } from 'react-navigation';
@@ -43,6 +43,7 @@ export default function HowYouFeelScreen() {
 
   return (
     <View style={styles.containerStyle}>
+      <KeyboardAvoidingView style={styles.containerStyle} contentContainerStyle={styles.containerStyle} behavior='position' enabled>
       <View style={styles.headerNavigationWrapperStyle}>
         <TouchableOpacity onPress={onBackPress} disabled={step === 1} style={{ opacity: step === 1 ? 0 : 1}}>
           <Image source={require('@assets/icons/Back.png')} resizeMode="cover" style={styles.navigationIconStyle} />
@@ -135,7 +136,7 @@ export default function HowYouFeelScreen() {
 
         </View>
       </View>
-      <KeyboardSpacer/>
+      </KeyboardAvoidingView>
     </View>
   );
 }
