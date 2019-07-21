@@ -71,7 +71,7 @@ export default function ExerciceScreen() {
               </TouchableOpacity>
               <TouchableOpacity style={styles.tabButtonStyle}>
                 <StyledText fontFamily={null}  fontSize={14} color={Colors.Orange_1}>
-                  {'Schedule'}
+                  {'All exercises'}
                 </StyledText>
               </TouchableOpacity>
             </View>

@@ -46,14 +46,14 @@ export default function ContactScreen() {
     {
       key: 'a',
       name: 'Tokunaga Yae',
-      description: 'Family',
+      description: 'Pharmacist',
       cloud: true,
       profilePicture: require('@assets/images/user-picture-6.png')
     },
     {
       key: 'b',
       name: 'Raven Cannie',
-      description: 'Family',
+      description: 'Pharmacist',
       cloud: false,
       profilePicture: require('@assets/images/user-picture-7.png')
     },
@@ -97,7 +97,7 @@ export default function ContactScreen() {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setTab(2)} style={styles.tabButtonStyle}>
               <StyledText fontFamily={tab === 2 ? "SB" : null}  fontSize={14} color={Colors.Orange_1}>
-                {'Family'}
+                {'Pharmacists'}
               </StyledText>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setTab(3)}  style={styles.tabButtonStyle}>

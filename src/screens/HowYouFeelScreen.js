@@ -53,7 +53,7 @@ export default function HowYouFeelScreen() {
         </TouchableOpacity>
       </View>
       <View flex={1}>
-        <Image source={require('@assets/images/How-are-you-feeling-today.gif')} resizeMode="cover" style={styles.bigGifStyle} />
+        <Image source={step !== 4 ? require('@assets/images/How-are-you-feeling-today.gif') : require('@assets/images/Good-job.gif')} resizeMode="cover" style={styles.bigGifStyle} />
         <View flex={1} />
 
         <View style={styles.contentWrapperStyle}>

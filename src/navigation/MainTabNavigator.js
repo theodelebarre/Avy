@@ -123,8 +123,8 @@ const MainTabNavigator = createBottomTabNavigator(
   {
     JournalStack,
     MedicineStack,
-    ContactStack,
     ExerciseStack,
+    ContactStack,
     // SettingsStack,
   },
   {

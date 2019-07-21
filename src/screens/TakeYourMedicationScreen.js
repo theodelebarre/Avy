@@ -43,8 +43,8 @@ export default function TakeYourMedicationScreen() {
             <StyledText fontFamily="SB" fontSize={14} color={Colors.Red_1} textAlign="center">
               {'Instructions'}
             </StyledText>
-            <StyledText fontSize={14} color={Colors.Black_1} textAlign="center">
-              {'Only take medicine with food to avoid side effects.'}
+            <StyledText fontSize={15} color={Colors.Black_1} textAlign="center" addedStyle={{ marginTop: 12 }}>
+              {'Only take medicine with food to\navoid side effects.'}
             </StyledText>
           </View>}
         </View>
