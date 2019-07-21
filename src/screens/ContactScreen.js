@@ -8,8 +8,9 @@ import { Colors, Metrics } from '@theme';
 import { getStatusBarHeight } from '../functions';
 
 export default function ContactScreen() {
+  const [tab, setTab] = useState(1);
 
-  const CONTACT_DATA = [
+  const HOSPITAL_DATA = [
     {
       key: 'a',
       name: 'Bernd Pfeffer',
@@ -34,7 +35,43 @@ export default function ContactScreen() {
       description: 'Cardiologist',
       cloud: false,
     },
-  ]
+  ];
+
+  const FAMILY_DATA = [
+    {
+      key: 'a',
+      name: 'Tokunaga Yae',
+      description: 'Family',
+      cloud: true,
+    },
+    {
+      key: 'b',
+      name: 'Raven Cannie',
+      description: 'Family',
+      cloud: false,
+    },
+  ];
+
+  const FRIENDS_DATA = [
+    {
+      key: 'a',
+      name: 'Suhai Minhas',
+      description: 'Friend',
+      cloud: true,
+    },
+    {
+      key: 'b',
+      name: 'Roelof Bekken',
+      description: 'Friend',
+      cloud: false,
+    },
+    {
+      key: 'c',
+      name: 'Kong Yijun',
+      description: 'Friend',
+      cloud: false,
+    },
+  ];
 
   return (
     <View style={styles.containerStyle}>
@@ -43,18 +80,18 @@ export default function ContactScreen() {
         style={styles.linearGradientStyle}>
         <View style={styles.panelWrapperStyle}>
           <View style={styles.tabsWrapperStyle}>
-            <TouchableOpacity style={styles.tabButtonStyle}>
-              <StyledText fontFamily="SB"  fontSize={14} color={Colors.Orange_1}>
+            <TouchableOpacity  onPress={() => setTab(1)} style={styles.tabButtonStyle}>
+              <StyledText fontFamily={tab === 1 ? "SB" : null}  fontSize={14} color={Colors.Orange_1}>
                 {'St. Francis'}
               </StyledText>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.tabButtonStyle}>
-              <StyledText fontFamily={null}  fontSize={14} color={Colors.Orange_1}>
+            <TouchableOpacity onPress={() => setTab(2)} style={styles.tabButtonStyle}>
+              <StyledText fontFamily={tab === 2 ? "SB" : null}  fontSize={14} color={Colors.Orange_1}>
                 {'Family'}
               </StyledText>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.tabButtonStyle}>
-              <StyledText fontFamily={null}  fontSize={14} color={Colors.Orange_1}>
+            <TouchableOpacity onPress={() => setTab(3)}  style={styles.tabButtonStyle}>
+              <StyledText fontFamily={tab === 3 ? "SB" : null}  fontSize={14} color={Colors.Orange_1}>
                 {'Friends'}
               </StyledText>
             </TouchableOpacity>
@@ -70,7 +107,7 @@ export default function ContactScreen() {
           </View>
         </View>
         <FlatList
-          data={CONTACT_DATA}
+          data={tab === 1 && HOSPITAL_DATA || tab === 2 && FAMILY_DATA || tab === 3 && FRIENDS_DATA}
           ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
           contentContainerStyle={{ paddingHorizontal: 20 }}
           style={{ marginTop: 12 }}
