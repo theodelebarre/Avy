@@ -41,7 +41,7 @@ export default function ChatScreen() {
                   { cancelable: false },
                 );
               } else {
-                setCloudStatus(cloudStatus);
+                setCloudStatus(!cloudStatus);
               } 
               }} 
               style={styles.iconButtonStyle}>
