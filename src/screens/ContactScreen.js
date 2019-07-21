@@ -9,13 +9,14 @@ import { getStatusBarHeight } from '../functions';
 
 export default function ContactScreen() {
   const [tab, setTab] = useState(1);
+  const [cloudStatus, setCloudStatus] = useState(false)
 
   const HOSPITAL_DATA = [
     {
       key: 'a',
       name: 'Bernd Pfeffer',
       description: 'Cardiologist',
-      cloud: true,
+      cloud: cloudStatus,
       profilePicture: require('@assets/images/user-picture-2.png')
     },
     {
@@ -123,8 +124,8 @@ export default function ContactScreen() {
           renderItem={({item, index}) => {
             return (
               <View style={styles.contactWrapperStyle}>
-                <TouchableOpacity style={styles.iconButtonStyle}>
-                  <Image source={require('@assets/icons/Cloud.png')} resizeMode="cover" style={styles.contactIconsStyle} />
+                <TouchableOpacity onPress={() => setCloudStatus(!item.cloud)} style={styles.iconButtonStyle}>
+                  <Image source={item.cloud ? require('@assets/icons/Cloud_plain.png') : require('@assets/icons/Cloud.png')} resizeMode="cover" style={styles.contactIconsStyle} />
                 </TouchableOpacity>
                 <Image source={item.profilePicture} resizeMode="cover" style={styles.profilePictureStyle} />
                 <View flex={1}>
