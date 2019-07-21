@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, FlatList, Image, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo';
+import { useNavigation } from 'react-navigation-hooks';
 
 import { StyledText, InformationRow } from '@components';
 
@@ -8,6 +9,7 @@ import { Colors } from '@theme';
 import { getStatusBarHeight } from '../functions';
 
 export default function ExerciceScreen() {
+  const { navigate } = useNavigation();
 
   const EXERCICES_DATA = [
     {
@@ -44,7 +46,7 @@ export default function ExerciceScreen() {
 
         <View style={[styles.panelWrapperStyle, { flex: 0, padding: 32, borderRadius: 23, alignItems: 'center' }]}>
           <View style={styles.blueCircleStyle}>
-
+            <Image source={require('@assets/icons/Exercice.png')} style={styles.blueCircleIconStyle} resizeMode="cover" />
           </View>
           <StyledText fontFamily="SB" fontSize={15} color={Colors.Black_1}>
             {'Next exercice'}
@@ -52,7 +54,7 @@ export default function ExerciceScreen() {
           <StyledText fontSize={14} color={Colors.Grey_1}>
             {'Planned for 9:00pm'}
           </StyledText>
-          <TouchableOpacity style={styles.buttonStyle}>
+          <TouchableOpacity onPress={() => navigate('DoWorkOut')}style={styles.buttonStyle}>
             <StyledText fontFamily="SB"  fontSize={14} color={Colors.Orange_1}>
               {'Do work out'}
             </StyledText>
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.5,
     shadowRadius: 9,
     elevation: 5,
   },
@@ -162,4 +164,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginBottom: 24,
   },
+  blueCircleIconStyle: {
+    width: 36,
+    height: 36,
+  }
 });

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Image, FlatList, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo';
+import { useNavigation } from 'react-navigation-hooks';
 
 import { Colors } from '@theme';
 
@@ -9,6 +10,8 @@ import { StyledText } from '@components';
 import { getStatusBarHeight } from '../functions';
 
 export default function MedicineScreen() {
+
+  const { navigate } = useNavigation();
 
   const MEDICINE_DATA = [
     {
@@ -25,7 +28,7 @@ export default function MedicineScreen() {
       prescription: '30 mg Bumetadine, 1 capsule',
       taken: false,
       missed: false,
-      circleIcon: require('@assets/icons/Check.png'),
+      circleIcon: require('@assets/icons/Forward.png'),
     },
     {
       key: 'bc',
@@ -92,9 +95,9 @@ export default function MedicineScreen() {
               return (
                 <View>
                   <View style={styles.hourWrapperStyle}>
-                      <View style={[styles.circleStyle, { backgroundColor: !item.taken && !item.missed ? Colors.Orange_2 : item.missed ? Colors.White : Colors.Blue_1, borderColor: !item.taken && !item.missed ? Colors.Orange_1 : item.missed ? Colors.Blue_1 : Colors.White,  }]}>
+                      <TouchableOpacity onPress={() => navigate('TakeYourMedication')} disabled={item.missed || item.taken} style={[styles.circleStyle, { backgroundColor: !item.taken && !item.missed ? Colors.Orange_2 : item.missed ? Colors.White : Colors.Blue_1, borderColor: !item.taken && !item.missed ? Colors.Orange_1 : item.missed ? Colors.Blue_1 : Colors.White,  }]}>
                         <Image source={item.circleIcon} style={[styles.circleIconStyle, { tintColor: !item.taken && !item.missed ? Colors.Orange_1 : item.missed ? Colors.Blue_1 : Colors.White }]} resizeMode="cover" />
-                      </View>
+                      </TouchableOpacity>
                       <StyledText fontFamily="SB" fontSize={14} color={!item.taken && !item.missed ? Colors.Orange_1 : Colors.Blue_1}>
                         {item.hour}
                       </StyledText>
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.5,
     shadowRadius: 9,
     elevation: 5,
   },

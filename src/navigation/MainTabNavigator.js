@@ -6,9 +6,35 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import JournalScreen from '../screens/JournalScreen';
 import HowYouFeelScreen from '../screens/HowYouFeelScreen';
 import MedicineScreen from '../screens/MedicineScreen';
+import TakeYourMedicationScreen from '../screens/TakeYourMedicationScreen';
 import ContactScreen from '../screens/ContactScreen';
 import ExerciseScreen from '../screens/ExerciseScreen';
+import DoWorkOutScreen from '../screens/DoWorkOutScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+
+const TakeYourMedicationModalStack = createStackNavigator(
+  {
+    TakeYourMedication: {
+      screen: TakeYourMedicationScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  }
+);
+
+const DoWorkOutModalStack = createStackNavigator(
+  {
+    DoWorkOut: {
+      screen: DoWorkOutScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  }
+);
 
 const HowYouFeelModalStack = createStackNavigator(
   {
@@ -110,6 +136,8 @@ export default createStackNavigator(
       screen: MainStacks,
     },
     HowYouFeel: HowYouFeelModalStack,
+    DoWorkOut: DoWorkOutModalStack,
+    TakeYourMedication: TakeYourMedicationModalStack,
   },
   {
     mode: 'modal',

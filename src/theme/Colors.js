@@ -7,7 +7,8 @@ const Colors = {
     Grey_2 :'rgb(245, 245, 245)',
     Orange_1 :'rgb(240, 97, 41)',
     Orange_2 :'rgb(255, 241, 236)',
-    Orange_Shadow: 'rgba(240, 97, 41, 0.5)'
+    Orange_Shadow: 'rgba(240, 97, 41, 0.5)',
+    Red_1 : '#FC4D4C',
 };
 
 export default Colors;
