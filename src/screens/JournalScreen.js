@@ -38,7 +38,7 @@ export default function JournalScreen() {
         colors={[Colors.Blue_1, Colors.Blue_1, Colors.White]}
         style={styles.linearGradientStyle}>
         <View style={styles.profilePictureWrapperStyle}>
-          <Image source={require('@assets/images/profile-picture.png')} resizeMode="cover" style={styles.profilePictureStyle} />
+          <Image source={require('@assets/images/user-picture-0.png')} resizeMode="cover" style={styles.profilePictureStyle} />
         </View>
 
         <View style={styles.panelWrapperStyle}>

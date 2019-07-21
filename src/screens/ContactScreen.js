@@ -16,24 +16,28 @@ export default function ContactScreen() {
       name: 'Bernd Pfeffer',
       description: 'Cardiologist',
       cloud: true,
+      profilePicture: require('@assets/images/user-picture-2.png')
     },
     {
       key: 'b',
       name: 'Phak Sikali',
       description: 'Cardiologist',
       cloud: false,
+      profilePicture: require('@assets/images/user-picture-3.png')
     },
     {
       key: 'c',
       name: 'Devees Nandi',
       description: 'Cardiologist',
       cloud: false,
+      profilePicture: require('@assets/images/user-picture-4.png')
     },
     {
       key: 'd',
       name: 'Fariba Mirzaii',
       description: 'Cardiologist',
       cloud: false,
+      profilePicture: require('@assets/images/user-picture-5.png')
     },
   ];
 
@@ -43,12 +47,14 @@ export default function ContactScreen() {
       name: 'Tokunaga Yae',
       description: 'Family',
       cloud: true,
+      profilePicture: require('@assets/images/user-picture-6.png')
     },
     {
       key: 'b',
       name: 'Raven Cannie',
       description: 'Family',
       cloud: false,
+      profilePicture: require('@assets/images/user-picture-7.png')
     },
   ];
 
@@ -58,18 +64,21 @@ export default function ContactScreen() {
       name: 'Suhai Minhas',
       description: 'Friend',
       cloud: true,
+      profilePicture: require('@assets/images/user-picture-8.png')
     },
     {
       key: 'b',
       name: 'Roelof Bekken',
       description: 'Friend',
       cloud: false,
+      profilePicture: require('@assets/images/user-picture-11.png')
     },
     {
       key: 'c',
       name: 'Kong Yijun',
       description: 'Friend',
       cloud: false,
+      profilePicture: require('@assets/images/user-picture-1.png')
     },
   ];
 
@@ -117,7 +126,7 @@ export default function ContactScreen() {
                 <TouchableOpacity style={styles.iconButtonStyle}>
                   <Image source={require('@assets/icons/Cloud.png')} resizeMode="cover" style={styles.contactIconsStyle} />
                 </TouchableOpacity>
-                <Image source={require('@assets/images/profile-picture.png')} resizeMode="cover" style={styles.profilePictureStyle} />
+                <Image source={item.profilePicture} resizeMode="cover" style={styles.profilePictureStyle} />
                 <View flex={1}>
                   <StyledText fontFamily="SB" fontSize={14} color={Colors.Black_1}>
                     {item.name}
