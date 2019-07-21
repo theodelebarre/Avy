@@ -9,7 +9,7 @@ import { getStatusBarHeight } from '../functions';
 
 export default function ContactScreen() {
   const [tab, setTab] = useState(1);
-  const [cloudStatus, setCloudStatus] = useState(false)
+  const [cloudStatus, setCloudStatus] = useState(false);
 
   const HOSPITAL_DATA = [
     {

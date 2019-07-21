@@ -162,7 +162,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Grey_2,
     height: 1,
     marginHorizontal: 20,
-    marginBottom: 24,
   },
   blueCircleIconStyle: {
     width: 36,

@@ -5,13 +5,47 @@ import { useNavigation } from 'react-navigation-hooks';
 
 import { Colors } from '@theme';
 
-import { StyledText } from '@components';
+import { StyledText, InformationRow } from '@components';
 
 import { getStatusBarHeight } from '../functions';
 
 export default function MedicineScreen() {
+  const [tab, setTab] = useState(1);
 
   const { navigate } = useNavigation();
+
+  const MEDS_DATA = [
+    {
+      key: 'a',
+      title: 'Lisinopril',
+      description: '1x daily • 1mg • 1 capsule',
+      done: false,
+    },
+    {
+      key: 'b',
+      title: 'Bisoprolol',
+      description: '1x daily • 1mg • 1 capsule',
+      done: false,
+    },
+    {
+      key: 'c',
+      title: 'Bumetadine',
+      description: '2x daily • 1mg • 1 capsule',
+      done: false,
+    },
+    {
+      key: 'd',
+      title: 'Digoxine',
+      description: '2x daily • 1mg • 1 capsule',
+      done: false,
+    },
+    {
+      key: 'e',
+      title: 'Warfarine',
+      description: '2x daily • 1mg • 1 capsule',
+      done: false,
+    },
+  ];
 
   const MEDICINE_DATA = [
     {
@@ -71,13 +105,31 @@ export default function MedicineScreen() {
         style={styles.linearGradientStyle}>
 
         <View style={styles.panelWrapperStyle}>
-          <View style={styles.headerWrapperStyle}>
+          {/* <View style={styles.headerWrapperStyle}>
             <StyledText fontFamily="SB" fontSize={15} color={Colors.Black_1}>
               {'Your medication'}
             </StyledText>
             <View style={styles.headerSeparatorStyle} />
-          </View>
-          
+          </View> */}
+
+
+            <View>
+              <View style={styles.tabsWrapperStyle}>
+                <TouchableOpacity  onPress={() => setTab(1)} style={styles.tabButtonStyle}>
+                  <StyledText fontFamily={tab === 1 ? "SB" : null}  fontSize={14} color={Colors.Orange_1}>
+                    {'Timeline'}
+                  </StyledText>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setTab(2)} style={styles.tabButtonStyle}>
+                  <StyledText fontFamily={tab === 2 ? "SB" : null}  fontSize={14} color={Colors.Orange_1}>
+                    {'All meds'}
+                  </StyledText>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.headerSeparatorStyle} />
+            </View>
+
+          {tab === 1 && <View>
           <View style={styles.sectionHeaderWrapperStyle}>
             <StyledText fontFamily="SB" fontSize={14} color={Colors.Grey_1}>
               {'Today, 20 Jul 2019'}
@@ -113,6 +165,17 @@ export default function MedicineScreen() {
               );
             }}
           />
+          </View>}
+
+          {tab === 2 && 
+            <FlatList
+              data={MEDS_DATA}
+              ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
+              style={{ marginTop: 20 }}
+              contentContainerStyle={{ paddingHorizontal: 24 }}
+              renderItem={({item, index}) => <InformationRow key={item.key} circleIcon={require('@assets/icons/Medicine.png')}title={item.title} description={item.description} showCheckIcon={item.done} />}
+            />
+          }
         </View>
        
       </LinearGradient>
@@ -149,8 +212,10 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   headerWrapperStyle: {
-    marginTop: 20,
+    backgroundColor: Colors.Grey_2,
+    height: 1,
     marginHorizontal: 20,
+    marginBottom: 24,
   },
   headerSeparatorStyle: {
     backgroundColor: Colors.Grey_2,
@@ -198,5 +263,15 @@ const styles = StyleSheet.create({
   circleIconStyle: {
     width: 22,
     height: 22,
-  }
+  },
+  tabsWrapperStyle: {
+    flexDirection: 'row',
+  },
+  tabButtonStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20,
+    paddingBottom: 8,
+  },
 });
